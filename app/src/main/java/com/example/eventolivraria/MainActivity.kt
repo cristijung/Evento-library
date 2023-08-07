@@ -30,6 +30,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun LibraryGreetingWithImage(message: String, from:String, modifier: Modifier = Modifier) {
+
+}
 @Composable
 fun GreetingText(message: String, modifier: Modifier = Modifier) {
     Text(
