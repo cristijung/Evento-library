@@ -5,10 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,7 +21,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.media3.effect.Crop
 import com.example.eventolivraria.ui.theme.EventoLivrariaTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,11 +44,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LibraryGreetingWithImage(message: String, from:String, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.androidlibrary)
-    Box {
+    Box  {
         Image(
             painter = image,
             contentDescription = null
         )
+
         GreetingText(
             message = message,
             from = from,
@@ -58,25 +62,33 @@ fun LibraryGreetingWithImage(message: String, from:String, modifier: Modifier = 
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Text(
-        text = message,
-        fontSize = 90.sp,
-        lineHeight = 116.sp,
-        textAlign = TextAlign.Center,
-        color = Color.White,
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
+        Text(
+            text = message,
+            fontSize = 90.sp,
+            lineHeight = 116.sp,
+            textAlign = TextAlign.Center,
+            color = Color.White,
 
-    )
-    Text(
-        text = from,
-        fontSize = 36.sp,
-        color = Color.LightGray,
-        modifier = with(Modifier) {
-            padding(top = 620.dp)
-                .padding(end = 6.dp)
-                .padding(start = 30.dp)
-                .background(Color.Gray)
-        }
-    )
+            )
+        Text(
+            text = from,
+            fontSize = 36.sp,
+            color = Color.LightGray,
+            modifier = with(Modifier) {
+                padding(top = 100.dp)
+                    .padding(end = 6.dp)
+                    .padding(start = 30.dp)
+                    .padding(bottom = 5.dp)
+                    .background(Color.Gray)
+
+            }
+        )
+    }
+
 }
 @Preview(showBackground = true)
 @Composable
@@ -85,3 +97,4 @@ fun LibraryEventPreview() {
         LibraryGreetingWithImage("Seja Bem Vindo!", "The House of Book" )
     }
 }
+
